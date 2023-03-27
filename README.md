@@ -3,7 +3,7 @@
 Shenyue Jia
 
 ## Reference
-- [Week 16 code-along notebook](https://github.com/jiashenyue/data-viz-wk17-codealongs-life-expectancy)
+- [Week 17 code-along notebook](https://github.com/jiashenyue/data-viz-wk17-codealongs-life-expectancy)
 - Notebook from [(Practice) Explaining Single Observations](https://github.com/coding-dojo-data-science/curriculum-data-viz-solutions/blob/main/local_explanations.ipynb)
 
 ## Business Problem
