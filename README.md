@@ -2,7 +2,7 @@
 
 Shenyue Jia
 
-## Business Problem:
+## Business Problem
 - We have a dataset showing item sales and a number of related metrics of the outlets where the items are sold. 
 - We want to use these metrics to investigate which factors are the most important determinants of item sales. 
 - Eventually, we want to construct a model to estimate the item sales based on the metrics available from our dataset.
@@ -115,4 +115,61 @@ Rank | Model | SHAP
         - Positive values (red dots on the right). If items are more likely to be sold in Type3 Supermarket, it tend to have a higher value in sales.
         - Negative values (blue dots on the left). If items are less likely to be sold in Type3 Supermarket, it tend to have a lower value.
 
+## Local Explanations
+
+### The row with the maximum `Item_MRP`
+
+**LIME Table Explanation**
+![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Lime-Explanation-Highest-MRP.png)
+
+- This item had a predicted outlet sales value of 3171.87.
+- The following features are associated with **high** outlet sales value:
+    - `Outlet_Type` **IS NOT** `Grocery Store`
+    - `Item_MRP` = 264.72 (> 179.52)
+    - `Item_Type` **IS NOT** `Others`
+
+- The following features are associated with **low** outlet sales value:
+    - `Outlet_Type_Supermarket` **IS NOT** `Type3`
+    - `Item_Type` **IS NOT** `Breakfast`
+    - `Outlet_Identifier` **IS NOT** `Out027`
+    - `Item_Type` **IS NOT** `Soft Drinks`, `Seafood`, or `Fruis and Vegetables`
+    - If we flip the above conditions, they are conditions associated with high outlet sales value
+
+**Individual Force Plot**
+![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/indivisual-force-plot-max-mrp.png)
+
+- The base value is 2154
+- `SHAP` value (f(x)) is 3171.87
+- `Item_MRP` is the most important feature for this item
+- `Item_MRP` is pushing the prediction toward a higher value (red bar). The `Item_MRP` for this item is 264.7.
+- `Outlet_Type` (not Grocery Store) AND `Item_Visibility` (0.02593) are also pushing the prediction toward a higher value.
+- `Outlet_Type_Supermarket` (Type1) and `Item_Type` (Frozen Food) are pushing prediction toward a lower value 
  
+ ### The row with the maximum `Item_Visibility`
+ 
+ **LIME Table Explanation**
+ ![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Lime-Explanation-Highest-Visibility.png)
+ 
+ - This item had a predicted outlet sales value of 583.24.
+- The following features are associated with **high** outlet sales value:
+    - `Item_MRP` = 264.72 (> 179.52)
+    - `Item_Type` **IS NOT** `Breakfast`
+    - `Outlet_Size` **IS NOT** `High`
+
+- The following features are associated with **low** outlet sales value:
+    - `Outlet_Type` **IS NOT** `Grocery Store`
+    - `Outlet_Type_Supermarket` **IS NOT** `Type3`
+    - `Item_Type` **IS NOT** `Seafood`, `Soft Drinks`, or `Others`
+    - `Outlet_Identifier` **IS NOT** `OUT027`
+    - If we flip the above conditions, they are conditions associated with high outlet sales value
+
+**Individual Force Plot**
+
+![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/indivisual-force-plot-max-vis.png)
+
+- The base value is 2154
+- `SHAP` value (f(x)) is 583.24
+- `Item_MRP` is the most important feature for this item
+- `Item_MRP` is pushing the prediction toward a higher value (red bar). The `Item_MRP` for this item is 194.6.
+`Item_Visibility` (0.2934) are also pushing the prediction toward a higher value.
+- `Outlet_Type_Supermarket` (not Type3) and `Outlet_Type` (**is** Grocery Store) are pushing prediction toward a lower value 
