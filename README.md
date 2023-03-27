@@ -83,11 +83,36 @@ Feature  | Feature Importance
 ## Feature Importance by `SHAP`
 ### Results from `SHAP` and model
 
+Rank | Model | SHAP
+-----| -----| ----
+1 | `Item_MRP`| `Item_MRP`
+2 | `Outlet_Type_Grocery Store` | `Outlet_Type_Grocery Store`
+3 | `Item_Visibility` | `Outlet_Type Supermarket Type3`
+4 | `Item_Weight` | `Item_Visibility`
+5 | `Outlet_Type_Supermarket Type3` | `Item_Weight`
+
+- In previous analysis, we excluded features derived from `Outlet_Identifier` as they are the IDs of outlets
+- The features displayed below do not include any features derived from `Outlet_Identifier`
+- We can see the top 5 most important features derived from the model and by SHAP are slightly different (in orders)
+    - `Item_Visibility` ranked #3 in the result from model, but ranked #4 in results by SHAP
+    - `Item_Visibility` ranked #4 in the result from model, but ranked #5 in results by SHAP
+    - `Outlet_Type_Supermarket Type3` ranked #5 in the result from model, but ranked #3 in results by SHAP
+
 ![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Summary_Plot_Bar.png)
 
 ### Indication of Top 3 Most Important Features
+
 ![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Summary_Plot_dot.png)
 
-
+- The Top 3 most important features according to SHAP are `Item_MRP`, `Outlet_Type_Grocery Store`, and `Outlet_Type Supermarket Type3`
+    - `Item_MRP`
+        - Positive values (red dots on the right). The greater the maximum retail price of an item, the higher the model will predict as the item outlet sales.
+        - Negative values (blue dots on the left). The smaller the maximum retail price of an item, the lower the model will predict as the item outlet sales.
+    - `Outlet_Type_Grocery Store`
+        - Positive values (red dots on the left). If items are more likely to be sold in Grocery Store, it tend to have a lower value in sales.
+        - Negative values (blue dots on the right). If items are less likely to be sold in Grocery Store, it tend to have a higher value in sales.
+    - `Outlet_Type Supermarket Type3`
+        - Positive values (red dots on the right). If items are more likely to be sold in Type3 Supermarket, it tend to have a higher value in sales.
+        - Negative values (blue dots on the left). If items are less likely to be sold in Type3 Supermarket, it tend to have a lower value.
 
  
