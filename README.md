@@ -80,6 +80,13 @@ Feature  | Feature Importance
 `Item_Weight` | 0.0624
 `Outlet_Type_Supermarket Type3` | 0.0563
 
+## Feature Importance by `SHAP`
+### Results from `SHAP` and model
+
+![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Summary_Plot_Bar.png)
+
+### Indication of Top 3 Most Important Features
+![png](https://github.com/jiashenyue/project-1-supermarket-sales-analysis/blob/main/PNG/Summary_Plot_dot.png)
 
 
 
